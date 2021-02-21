@@ -28,8 +28,10 @@ $ npm i
 
 ## `.env` file
 
+open the `.env` file and make changes or copy the below snippet for quick test
+
 ```
-# Note this is an example do change the values before deploying in production
+# Note this is an example DO change the values before deploying in production
 NODE_ENV="development"
 PORT=3000
 SITE_URL="http://localhost:3000"
