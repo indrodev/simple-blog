@@ -1,4 +1,4 @@
-const { verifyPassword, generateJwt } = require("../../../lib")
+const { verifyPassword, generateJwt, validator } = require("../../../lib")
 const User = require("../../../models/user")
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
    * @apiSuccessExample {json} Success-Response:
    * {
    *     "error" : false,
-   *     "message" : "User Authenticated",
+   *     "message" : "Success",
    *     "token" : "asd.sdf.asw"
    * }
    * 
@@ -42,10 +42,13 @@ module.exports = {
         email,
         password
       } = req.body
-      
+
       if (email === undefined) return res.status(400).json({ error: true, message: "Missing required fields `email`" })
       if (password === undefined) return res.status(400).json({ error: true, message: "Missing required fields `password`" })
-
+      // validation
+      validator(req.body)
+      
+      // fetch user
       const user = await User.findOne({ email }).exec()
       if(user === null) return res.status(400).json({ error: true, message: "No user found" })
 

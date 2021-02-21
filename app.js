@@ -42,7 +42,8 @@ app.use((req, res) => {
 
 // on exit
 async function graceful() {
-  process.exit(0)
+  console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" )
+  process.exit(1)
 }
 
 process.on("SIGTERM", graceful)

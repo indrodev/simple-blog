@@ -9,4 +9,5 @@ const server = http.createServer(app)
 // started listener
 server.listen(PORT, () => {
   console.log(`Server Running at Port ${PORT}`)
+  console.log(`API docs available at http://localhost:${PORT}/docs`)
 })

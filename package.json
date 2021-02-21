@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
+    "debug": "nodemon --inspect server.js",
     "gendoc": "apidoc -i routes/ -o public/docs"
   },
   "apidoc": {
@@ -42,6 +42,6 @@
   "devDependencies": {
     "apidoc": "^0.26.0",
     "eslint": "^7.20.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.4"
   }
 }

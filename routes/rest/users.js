@@ -23,7 +23,7 @@ module.exports = {
    * @apiSuccessExample {json} Success-Response:
    * {
    *     "error" : false,
-   *     "message" : "User Authenticated",
+   *     "message" : "Success",
    *     "users" : []
    * }
    * 
@@ -72,17 +72,11 @@ module.exports = {
    * @apiError (4xx|5xx) {String} message
    * 
    * 
-   * @apiParamExample  {json} Request-Example:
-   * {
-   *     "email" : "somebody@example.com",
-   *     "password" : "supersecurepassword"
-   * }
-   * 
    * 
    * @apiSuccessExample {json} Success-Response:
    * {
    *     "error" : false,
-   *     "message" : "User Authenticated",
+   *     "message" : "Success",
    *     "user" : {}
    * }
    * 

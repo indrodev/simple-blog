@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { validator } = require("../../lib")
 const ObjectId = mongoose.Types.ObjectId
 const Post = require("../../models/post")
 
@@ -24,15 +25,15 @@ module.exports = {
    * {
    *     "error" : false,
    *     "message" : "Success",
-   *     "posts" : {}
+   *     "posts" : [{}]
    * }
    * 
    * 
    */
   async find(req, res) {
     try {
-      
       // const post = await Post.find({}).populate("_createdBy", "-password").exec()
+      // fetching posts using aggregate
       const posts = await Post.aggregate([
         {
           $lookup:
@@ -44,7 +45,7 @@ module.exports = {
           }
         },
         { 
-          $project: { title: 1, description: 1, createdBy: {$arrayElemAt:["$createdBy",0]} }
+          $project: { title: 1, description: 1, createdBy: { $arrayElemAt:["$createdBy", 0] } }
         },
         {
           $project: { "createdBy.password": 0 }
@@ -77,18 +78,12 @@ module.exports = {
    * @apiError (4xx|5xx) {String} message
    * 
    * 
-   * @apiParamExample  {json} Request-Example:
-   * {
-   *     "email" : "somebody@example.com",
-   *     "password" : "supersecurepassword"
-   * }
-   * 
    * 
    * @apiSuccessExample {json} Success-Response:
    * {
    *     "error" : false,
-   *     "message" : "User Authenticated",
-   *     "token" : "asd.sdf.asw"
+   *     "message" : "Success",
+   *     "post" : {}
    * }
    * 
    * 
@@ -181,11 +176,14 @@ module.exports = {
 
       if (title === undefined) return res.status(400).json({ error: true, message: "Missing required fields `title`" })
       if (description === undefined) return res.status(400).json({ error: true, message: "Missing required fields `description`" })
-
+      // validate data
+      validator(req.body)
+      
+      // creating a post
       const post = await Post.create({
         title,
         description,
-        _createdBy: req.user.id
+        _createdBy: req.user.id // this is added in middleware `checkJwt`
       })
 
       return res.status(200).json({ error: false, post })

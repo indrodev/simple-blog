@@ -13,7 +13,7 @@ const posts = require("./posts")
 router.post("/login", login.post)
 router.post("/signup", signup.post)
 
-router.all("*", checkJwt)
+router.all("*", checkJwt) // middleware
 /* Authenticated Routes */
 
 /* Users */
