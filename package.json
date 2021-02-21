@@ -1,0 +1,47 @@
+{
+  "name": "simple-blog",
+  "version": "1.0.0",
+  "description": "A basic User, Post API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "debug": "nodemon --inspect=0.0.0.0:9229 server.js",
+    "gendoc": "apidoc -i routes/ -o public/docs"
+  },
+  "apidoc": {
+    "name": "Webskitters Assignment",
+    "version": "1.0.0",
+    "description": "API Documentation for the assignment<br> <span style=\"font-size: 16px;\" >API Base URL: <a>http://localhost:3000/api/v1</a></span>",
+    "title": "Webskitters Assignment API Docs",
+    "useHostUrlAsSampleUrl": true,
+    "sampleUrl": "http://localhost:3000/api/v1",
+    "url": "http://localhost:3000/api/v1",
+    "order": [
+      "GetUser",
+      "PostUser"
+    ],
+    "template": {
+      "withCompare": true,
+      "withGenerator": true
+    }
+  },
+  "author": "Indrajit Roy",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "apidoc": "^0.26.0",
+    "eslint": "^7.20.0",
+    "nodemon": "^2.0.7"
+  }
+}
