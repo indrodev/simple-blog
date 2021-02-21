@@ -217,7 +217,7 @@ define({ "api": [
     "url": "/post",
     "title": "Create a new post",
     "name": "postCreate",
-    "group": "Posts",
+    "group": "Post",
     "version": "1.0.0",
     "permission": [
       {
@@ -244,22 +244,22 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "email",
-            "description": "<p>Email id of the user</p>"
+            "field": "title",
+            "description": "<p>Title of the post</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "password",
-            "description": "<p>Password of the user</p>"
+            "field": "description",
+            "description": "<p>Description of the post</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"email\" : \"somebody@example.com\",\n    \"password\" : \"supersecurepassword\"\n}",
+          "content": "{\n    \"title\" : \"This is a sample title\",\n    \"description\" : \"This is a dummy desc\"\n}",
           "type": "json"
         }
       ]
@@ -283,9 +283,9 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "Object[]",
+            "type": "Object",
             "optional": false,
-            "field": "posts",
+            "field": "post",
             "description": ""
           }
         ]
@@ -293,7 +293,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\" : false,\n    \"message\" : \"User Authenticated\",\n    \"token\" : \"asd.sdf.asw\"\n}",
+          "content": "{\n    \"error\" : false,\n    \"message\" : \"Success\",\n    \"post\" : {}\n}",
           "type": "json"
         }
       ]
@@ -319,7 +319,7 @@ define({ "api": [
       }
     },
     "filename": "routes/rest/posts.js",
-    "groupTitle": "Posts",
+    "groupTitle": "Post",
     "sampleRequest": [
       {
         "url": "http://localhost:3000/api/v1/post"
@@ -331,7 +331,7 @@ define({ "api": [
     "url": "/post/:id",
     "title": "Post Details",
     "name": "postDetails",
-    "group": "Posts",
+    "group": "Post",
     "version": "1.0.0",
     "permission": [
       {
@@ -426,7 +426,7 @@ define({ "api": [
       }
     },
     "filename": "routes/rest/posts.js",
-    "groupTitle": "Posts",
+    "groupTitle": "Post",
     "sampleRequest": [
       {
         "url": "http://localhost:3000/api/v1/post/:id"
@@ -438,7 +438,7 @@ define({ "api": [
     "url": "/posts",
     "title": "Fetch All Posts",
     "name": "postsFetch",
-    "group": "Posts",
+    "group": "Post",
     "version": "1.0.0",
     "permission": [
       {
@@ -513,7 +513,7 @@ define({ "api": [
       }
     },
     "filename": "routes/rest/posts.js",
-    "groupTitle": "Posts",
+    "groupTitle": "Post",
     "sampleRequest": [
       {
         "url": "http://localhost:3000/api/v1/posts"
@@ -522,11 +522,24 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/login",
+    "url": "/user/:id",
     "title": "User Details",
     "name": "userDetails",
     "group": "User",
     "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The <code>token</code> which was generated at the time of login. Example: <code>Bearer &lt;token&gt;</code></p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -534,15 +547,8 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "email",
-            "description": "<p>Email id of the user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "password",
-            "description": "<p>Password of the user</p>"
+            "field": "id",
+            "description": "<p>User's _id</p>"
           }
         ]
       },
@@ -573,9 +579,9 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Object",
             "optional": false,
-            "field": "token",
+            "field": "user",
             "description": ""
           }
         ]
@@ -583,7 +589,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\" : false,\n    \"message\" : \"User Authenticated\",\n    \"token\" : \"asd.sdf.asw\"\n}",
+          "content": "{\n    \"error\" : false,\n    \"message\" : \"User Authenticated\",\n    \"user\" : {}\n}",
           "type": "json"
         }
       ]
@@ -612,43 +618,29 @@ define({ "api": [
     "groupTitle": "User",
     "sampleRequest": [
       {
-        "url": "http://localhost:3000/api/v1/login"
+        "url": "http://localhost:3000/api/v1/user/:id"
       }
     ]
   },
   {
-    "type": "post",
-    "url": "/login",
-    "title": "Fetch user's list",
+    "type": "get",
+    "url": "/users/posts",
+    "title": "Fetch user's list with posts",
     "name": "userFetch",
     "group": "User",
     "version": "1.0.0",
-    "parameter": {
+    "header": {
       "fields": {
-        "Parameter": [
+        "Header": [
           {
-            "group": "Parameter",
+            "group": "Header",
             "type": "String",
             "optional": false,
-            "field": "email",
-            "description": "<p>Email id of the user</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "password",
-            "description": "<p>Password of the user</p>"
+            "field": "Authorization",
+            "description": "<p>The <code>token</code> which was generated at the time of login. Example: <code>Bearer &lt;token&gt;</code></p>"
           }
         ]
-      },
-      "examples": [
-        {
-          "title": "Request-Example:",
-          "content": "{\n    \"email\" : \"somebody@example.com\",\n    \"password\" : \"supersecurepassword\"\n}",
-          "type": "json"
-        }
-      ]
+      }
     },
     "success": {
       "fields": {
@@ -669,9 +661,9 @@ define({ "api": [
           },
           {
             "group": "200",
-            "type": "String",
+            "type": "Object[]",
             "optional": false,
-            "field": "token",
+            "field": "users",
             "description": ""
           }
         ]
@@ -679,7 +671,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"error\" : false,\n    \"message\" : \"User Authenticated\",\n    \"token\" : \"asd.sdf.asw\"\n}",
+          "content": "{\n    \"error\" : false,\n    \"message\" : \"User Authenticated\",\n    \"users\" : []\n}",
           "type": "json"
         }
       ]
@@ -708,7 +700,7 @@ define({ "api": [
     "groupTitle": "User",
     "sampleRequest": [
       {
-        "url": "http://localhost:3000/api/v1/login"
+        "url": "http://localhost:3000/api/v1/users/posts"
       }
     ]
   }
