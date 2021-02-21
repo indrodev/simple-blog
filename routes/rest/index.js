@@ -1,6 +1,7 @@
 // all rest routes
 const router = require("express").Router()
-const { checkJwt } = require("../../middleware")
+const multer = require("multer")
+const { checkJwt, dynamicFileStorage } = require("../../middleware")
 const login = require("./auth/login")
 const signup = require("./auth/signup")
 
@@ -11,7 +12,13 @@ const posts = require("./posts")
 
 /* Auth */
 router.post("/login", login.post)
-router.post("/signup", signup.post)
+
+const upload = multer({
+  storage: dynamicFileStorage,
+  limits: { fileSize: 1000000 * 10 } // in bytes
+})
+
+router.post("/signup", upload.single("image"), signup.post)
 
 router.all("*", checkJwt) // middleware
 /* Authenticated Routes */

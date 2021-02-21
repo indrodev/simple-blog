@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "43553ea9-f81e-4d8b-b3f8-434c5558e674",
+		"name": "Sample-blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Indrajit Roy",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "demo@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123qwe",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "867433223",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"developerindrajit@gmail.com\",\n    \"password\": \"qwerty\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzI3NmZjMGE4YTIzNmYxNmRmMzMxYyIsIm5hbWUiOiJJbmRyYWppdCBSb3kiLCJlbWFpbCI6ImRldmVsb3BlcmluZHJhaml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMzkzNTcxNSwiZXhwIjoxNjE2NTI3NzE1fQ.GJsxisK8F3TFkIC4pTrpvkPEuTh3ZsG1idDHyTOcPFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This is a sample title 3\",\n    \"description\": \"This is a dummy desc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All Posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzI3NmZjMGE4YTIzNmYxNmRmMzMxYyIsIm5hbWUiOiJJbmRyYWppdCBSb3kiLCJlbWFpbCI6ImRldmVsb3BlcmluZHJhaml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMzkzNTcxNSwiZXhwIjoxNjE2NTI3NzE1fQ.GJsxisK8F3TFkIC4pTrpvkPEuTh3ZsG1idDHyTOcPFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzI3NmZjMGE4YTIzNmYxNmRmMzMxYyIsIm5hbWUiOiJJbmRyYWppdCBSb3kiLCJlbWFpbCI6ImRldmVsb3BlcmluZHJhaml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMzkzNTcxNSwiZXhwIjoxNjE2NTI3NzE1fQ.GJsxisK8F3TFkIC4pTrpvkPEuTh3ZsG1idDHyTOcPFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/post/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"post",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6032874da8c344ab89030173"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users With Post List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzI3NmZjMGE4YTIzNmYxNmRmMzMxYyIsIm5hbWUiOiJJbmRyYWppdCBSb3kiLCJlbWFpbCI6ImRldmVsb3BlcmluZHJhaml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMzkzNTcxNSwiZXhwIjoxNjE2NTI3NzE1fQ.GJsxisK8F3TFkIC4pTrpvkPEuTh3ZsG1idDHyTOcPFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/users/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMzI3NmZjMGE4YTIzNmYxNmRmMzMxYyIsIm5hbWUiOiJJbmRyYWppdCBSb3kiLCJlbWFpbCI6ImRldmVsb3BlcmluZHJhaml0QGdtYWlsLmNvbSIsImlhdCI6MTYxMzkzNTcxNSwiZXhwIjoxNjE2NTI3NzE1fQ.GJsxisK8F3TFkIC4pTrpvkPEuTh3ZsG1idDHyTOcPFA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/user/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6032b3fb3ed24f1e3341e69e"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "User Details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6032b3fb3ed24f1e3341e69e"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "315"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13b-+44chbAITLIkpQ/xUvbBeGbijQg\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 Feb 2021 19:39:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"message\": \"Success\",\n    \"user\": {\n        \"_id\": \"6032b3fb3ed24f1e3341e69e\",\n        \"name\": \"Indrajit Roy\",\n        \"email\": \"demo@example.com2\",\n        \"phone\": \"867433223\",\n        \"image\": \"Screenshot-from-2021-01-30-17-00-59-1613935611016.png\",\n        \"__v\": 0,\n        \"imageUrl\": \"http://localhost:3000/images/Screenshot-from-2021-01-30-17-00-59-1613935611016.png\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

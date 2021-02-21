@@ -109,7 +109,8 @@ module.exports = {
       ]).exec()
       if(user.length === 0) return res.status(400).json({ error: true, message: "No user found" })
 
-
+      // eslint-disable-next-line max-len
+      user[0].imageUrl = user[0].image !== undefined ? `${process.env.SITE_URL}/images/${user[0].image}`: undefined
       return res.status(200).json({ error: false, message: "Success", user: user[0] })
     } catch (err) {
       return res.status(500).json({ error: true, message: err.message })

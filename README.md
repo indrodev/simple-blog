@@ -4,6 +4,8 @@
 
 - `nodejs`, `mongodb` and `nvm` installed in the system
 
+or
+- `.devcontainer` feature in vscode. For more info - https://code.visualstudio.com/docs/remote/containers
 ## Installation
 
 Navigate in the project
@@ -43,11 +45,6 @@ MONGODB_CONNECTION_STRING="mongodb://localhost:27017/webskitters-blog"
 $ npm start
 
 # output
-# [nodemon] 2.0.7
-# [nodemon] to restart at any time, enter `rs`
-# [nodemon] watching path(s): *.*
-# [nodemon] watching extensions: js,mjs,json
-# [nodemon] starting `node server.js`
 # Server Running at Port 3000
 
 ```
@@ -56,4 +53,6 @@ $ npm start
 
 After running the service visit `http://looalhost:{PORT}/docs`
 
+or 
 
+You can find postman collection `public/postman-collection`

@@ -7,7 +7,8 @@ module.exports = {
    * @apiGroup Auth
    * @apiVersion  1.0.0
    * 
-   * 
+   * @apiHeader {String} Content-Type multipart/form-data; boundary=<calculated when request is sent>
+   *
    * @apiParam  {String} name Full name of the user
    * @apiParam  {String} phone Phone number of the user
    * @apiParam  {String} email Email id of the user
@@ -46,9 +47,8 @@ module.exports = {
         email,
         password,
         phone,
-        // image
       } = req.body
-
+      
       if (name === undefined) return res.status(400).json({ error: false, message: "Missing required fields `name`" })
       if (email === undefined) return res.status(400).json({ error: false, message: "Missing required fields `email`" })
       if (password === undefined) return res.status(400).json({ error: false, message: "Missing required fields `password`" })
@@ -62,7 +62,8 @@ module.exports = {
         name,
         email,
         password,
-        phone
+        phone,
+        image: req.file !== undefined ? req.file.filename : undefined
       })
       
       return res.status(201).json({ error: false, message: "User created successfully" })

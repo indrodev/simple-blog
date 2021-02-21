@@ -6,3 +6,6 @@ node_modules
 
 // VS-code
 .vscode
+
+//public images
+public/images/*
